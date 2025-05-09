@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const ProgressBarWithFill = () => {
-  const [bar, setBar] = useState(0);
+    const [bar, setBar] = useState(0);
+    const progressBarSpeed= Math.random() * (800) + 100; // Random speed between 1 and 100
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -11,7 +12,8 @@ const ProgressBarWithFill = () => {
         }
         return Math.min(prevBar + 1, 100);
       });
-    }, 500);
+    }, progressBarSpeed);
+    return () => clearInterval(interval); 
   }, []);
 
   return (
@@ -24,8 +26,8 @@ const ProgressBarWithFill = () => {
         aria-valuemin="0"
         aria-valuemax="100"
       >
-        {/* <span className="Progress-text">{bar}%</span> */}
       </div>
+        <span className="Progress-text">{bar}%</span>
     </div>
   );
 };

@@ -5,10 +5,10 @@ import ProgressBar from "./Components/ProgressBar";
 
 function App() {
   // const bars = [1, 3, 4, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-  const [openPregress, setOpenProgress] = useState(false);
+  const [bars, setBars] = useState([]);
 
   const handleClick = () => {
-    setOpenProgress(true);
+    setBars([...bars, Date.now()]); 
   };
 
   return (
@@ -20,7 +20,9 @@ function App() {
           Show Progress Bar
         </button>
       </div>
-      {openPregress && <ProgressBarWithFill />}
+      {bars.map((id) => (
+        <ProgressBarWithFill key={id} />
+      ))}
     </>
   );
 }
