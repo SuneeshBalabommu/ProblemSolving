@@ -57,7 +57,7 @@ Clicking the "Show Progress Bar" button creates a new progress bar, each progres
 bash
 Copy
 Edit
-git clone https://github.com/your-username/progress-bar-app.git
+git clone [https://github.com/your-username/progress-bar-app.git](https://github.com/SuneeshBalabommu/ProblemSolving.git)
 cd progress-bar-app
 npm install
 npm start
