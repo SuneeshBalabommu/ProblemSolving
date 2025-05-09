@@ -1,60 +1,59 @@
-#🟩 Dynamic Multi-State Progress Bar — React
-This is a solution to a machine coding interview question that requires creating a dynamic progress bar system in React. The key challenge is to show multiple independently progressing bars with a random speed between 100–900ms per increment, and display the percentage inside each bar.
+# 🟩 Dynamic Multi-State Progress Bar — React
 
-#✅ Problem Statement
-Design a UI with the following requirements:
+This project is a solution to a machine coding interview problem. The goal is to create a **dynamic progress bar system** in React where each bar runs independently with its own state and progresses at a random speed (between **100ms and 900ms per step**). Each bar also displays its percentage in the center as it progresses.
 
-A button that, when clicked, creates a new progress bar.
+---
 
-Each progress bar should have its own state and run independently.
+## ✅ Problem Statement
 
-The bar should fill up from 0% to 100%, with:
+Design a UI with the following features:
 
-Completed portion in green.
+- A **button** that creates a new progress bar each time it's clicked.
+- Each progress bar should:
+  - Progress **independently** from others.
+  - Fill from **0% to 100%**.
+  - Show **green** for the completed portion and **grey** for the remaining.
+  - Display a **dynamically updating percentage text** centered inside the bar.
+  - Progress at a **random interval between 100ms and 900ms** per step.
+  - Use `transform: translateX` for performance instead of modifying `width`.
 
-Incomplete portion in grey.
+---
 
-The percentage text should be shown in the center of the progress bar and update dynamically.
+## 🧠 Steps Followed to Solve the Problem
 
-The speed of each progress bar’s progression should be random between 100ms and 900ms.
+1. **Set up the React app** with `App.js` and a `ProgressBarWithFill` component.
+2. Added a **"Show Progress Bar"** button to `App.js` that triggers a new progress bar on each click.
+3. On button click:
+   - A unique ID (using `Date.now()`) is added to the `bars` array.
+4. In `ProgressBarWithFill`:
+   - Initialized a `bar` state at `0`.
+   - Used `useEffect` to set up an interval with random speed between `100-900ms`.
+   - Updated the `bar` state until it reaches `100`, then cleared the interval.
+5. **CSS animation**:
+   - Used `transform: translateX` to move the fill for better performance.
+   - Positioned percentage text at the **center** using `position: absolute` and `transform: translate(-50%, -50%)`.
+6. Styled using plain **CSS** with proper classNames.
 
-DOM reflow should be optimized by using transform: translateX instead of changing width.
+---
 
-#🧠 Steps Followed to Solve the Problem
-Set up React App with a base App component and a ProgressBarWithFill component.
+## 📁 Project Structure
 
-Created a button with an onClick handler to add a new progress bar using a timestamp (Date.now()) as a unique key.
-
-Each ProgressBarWithFill:
-
-Initializes bar state to 0.
-
-On mount, sets up an interval that increases the bar by 1% every random (100–900ms).
-
-Clears the interval when it reaches 100%.
-
-Used CSS transform: translateX to animate the filler to optimize performance and avoid constant DOM repaint from width changes.
-
-Positioned the percentage text absolutely in the center using transform: translate(-50%, -50%).
-
-Styled the bar with green fill, grey background, and centered bold percentage text.
-
-#📁 Project Structure
 scss
 Copy
 Edit
 
-#📦progress-bar-app
+# 📦progress-bar-app
  ┣ 📂src
  ┃ ┣ 📜App.js
  ┃ ┣ 📜App.css
  ┃ ┣ 📂Components
  ┃ ┃ ┗ 📜ProgressBarWithFill.js
  ┗ 📜README.md
-🧪 Demo
+ 
+# 🧪 Demo
 Clicking the "Show Progress Bar" button creates a new progress bar, each progressing independently at random speed with real-time percentage display.
 
-#💻 Installation & Run
+# 💻 Installation & Run
 bash
 Copy
 Edit
@@ -63,19 +62,19 @@ cd progress-bar-app
 npm install
 npm start
 
-#📸 Preview
+# 📸 Preview
 
 <img width="1470" alt="ProgressBar" src="https://github.com/user-attachments/assets/7c868e38-3f74-4392-9c3c-47d28c95abd1" />
 
 
-#🛠️ Tech Stack
+# 🛠️ Tech Stack
 React
 
 JavaScript (ES6+)
 
 CSS Flexbox
 
-#📌 Notes
+# 📌 Notes
 transform: translateX() is used for smooth, GPU-accelerated animations.
 
 The speed of the progress bar is randomized once at mount per bar.
