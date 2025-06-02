@@ -1,5 +1,5 @@
 # ProblemSolving
 
-## DSA
+## DS
 
 ## MACHINE CODING (REACT,JS,HTML,CSS)
